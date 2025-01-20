@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <!-- Librairie React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Cible : DOM (navigateur) -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel notre transpileur JSX -> JS  -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- type text/bale pour la transcription  -->
+    <script type="text/babel">
+
+        function Identify(props){
+
+            return (
+                <p>{props.firstname} {props.lastname} {props.age}</p>
+            )
+        }
+
+        function Bio(props){
+
+            return (
+                <p>{props.text}</p>
+            )
+        }
+
+        function App(props){
+
+            // rendu 
+            return (
+                <div>
+                    <Identify firstname="Antoine" lastname="Lucsko" age='25' />
+                    <Bio text="Ma super bio" />
+                </div>
+            );
+        }
+       
+        ReactDOM.createRoot(document.getElementById('root')).render(
+                  <App age='25' firstname='Antoine' lastname='Lucsko' />  );
+    </script>
+</body>
+</html>
