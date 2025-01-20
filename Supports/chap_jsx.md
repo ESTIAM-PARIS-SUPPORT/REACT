@@ -34,7 +34,8 @@ const el = React.createElement(
 
 Dans ce cours, tous les développements seront réalisés en JSX.
 
-> **Remarque** : La syntaxe JSX nécessite un compilateur. Dans ce cours, nous utilisons **[Babel](https://babeljs.io/)**, qui sera inclus directement dans le fichier `index.html` pour convertir le code JSX en JavaScript compréhensible par les navigateurs.
+>[!IMPORTANT]
+> **Remarque** : La syntaxe JSX nécessite un **compilateur**. Dans ce cours, nous utilisons **[Babel](https://babeljs.io/)**, qui sera inclus directement dans le fichier `index.html` pour convertir le code JSX en JavaScript compréhensible par les navigateurs.
 
 ---
 
@@ -73,6 +74,14 @@ Dans ce cours, tous les développements seront réalisés en JSX.
 </body>
 </html>
 ```
+
+## 01 Exercice
+
+Créez une page qui affiche votre nom et prénom. 
+
+## 02 Exercice
+
+Créez une page avec 2 composants et un composant racine App, le premier composant : nom prénom et deuxième le deuxième composant votre bio.
 
 ---
 
