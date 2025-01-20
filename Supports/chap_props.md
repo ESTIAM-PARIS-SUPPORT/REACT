@@ -216,7 +216,6 @@ const Clock = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-setInterval(() => root.render(<Clock />), 1000);
+
 ```
 
