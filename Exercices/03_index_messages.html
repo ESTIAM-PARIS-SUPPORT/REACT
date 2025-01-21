@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <!-- Librairie React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Cible : DOM (navigateur) -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel notre transpileur JSX -> JS  -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .main {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- type text/bale pour la transcription  -->
+    <script type="text/babel">
+
+        const MESSAGES = [
+            { message: "React JS" },
+            { message: "React Native" },
+            { message: "Angular" },
+            { message: "Symfony" },
+            { message: "MongoDB" },
+        ];
+
+        function Message(props){
+
+            return (
+                <p>{props.message}</p>
+            )
+        }
+
+        function Messages(props) {
+
+            // rendu 
+            return (
+                <div className="main">
+                    {props.messages.map((m, i) => <Message key={i} message={m.message} />)}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Messages messages={MESSAGES} />);
+    </script>
+</body>
+
+</html>
