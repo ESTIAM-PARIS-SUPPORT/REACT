@@ -145,48 +145,8 @@ const students = [
 
 ---
 
-### 03 - Exercice : Données des fruits
 
-Dans un fichier `index_fruits.html`, affichez une liste de fruits avec leurs prix et la moyenne des prix.
-
-#### Données :
-
-```js
-const products = [
-  { prices: [1.2, 1.1, 1.0], name: "apples" },
-  { prices: [1.8, 1.0, 1.9], name: "oranges" },
-  { prices: [1.0, 0.9, 1.1], name: "bananas" },
-];
-```
-
-#### Résultat attendu :
-
-```txt
-apples
-  prices :
-    1.2
-    1.1
-    1.0
-  average : 1.1
-
-oranges
-  prices :
-    1.8
-    1.0
-    1.9
-  average : 1.6
-
-...
-```
-
-**Indications** :
-- Créez un composant `<Product />` pour afficher les informations d'un fruit.
-- Utilisez `.map()` pour parcourir les produits.
-- Utilisez `toFixed(1)` pour arrondir la moyenne.
-
----
-
-### 04 - Exercice : Horloge
+### 03 - Exercice : Horloge
 
 Dans un fichier `index_horloge_clock.html`, créez un composant `<Clock />` qui affiche une horloge mise à jour en temps réel.
 
