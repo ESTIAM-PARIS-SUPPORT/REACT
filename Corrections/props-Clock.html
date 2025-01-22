@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Clock</title>
+
+    <!-- React and Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1A1A2E',
+                        'dark-card': '#16213E',
+                        'accent': '#0F3460',
+                        'primary-text': '#EAEAEA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-primary-text font-sans flex items-center justify-center h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const Clock = () => {
+            let currentTime = new Date().toLocaleTimeString();
+            const timer = 1000 ;
+
+            // setInterval(() => {
+            //     currentTime = new Date().toLocaleTimeString();
+
+            //     console.log(currentTime)
+            // }, timer)
+
+            return (
+                <div className="bg-dark-card p-8 rounded-xl shadow-lg text-center">
+                    <div className="flex items-center justify-center mb-4">
+                        <i className="fas fa-clock text-4xl text-accent"></i>
+                    </div>
+                    <p className="text-4xl mt-2">{currentTime}</p>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        //root.render(<Clock />)
+        setInterval(() => root.render(<Clock />), 1000);
+    </script>
+</body>
+
+</html>
