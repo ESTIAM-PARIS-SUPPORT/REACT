@@ -43,4 +43,4 @@ Ré-implémentez une horloge en utilisant `useState` pour gérer le temps qui pa
 
 
 ---
-## TP : [game](./TP/01_game.md)
+## TP : [game](../TP/01_game.md)
