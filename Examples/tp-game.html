@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1A1A2E',
+                        'dark-card': '#16213E',
+                        'accent': '#0F3460',
+                        'primary-text': '#EAEAEA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-primary-text font-sans flex items-center justify-center h-screen">
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Game() {
+
+            const handleClick = (index) => {
+                console.log(index === 2)
+            }
+
+            return (
+                <React.Fragment>
+                    {[1, 2, 3, 4].map((index, i) => (
+                        <button key={i} onClick={() => handleClick(index)}>?</button>
+                    ))}
+                </React.Fragment>
+            )
+        }
+
+        function App(props) {
+
+            return (
+                <div className="bg-dark-card p-8 rounded-xl shadow-lg text-center">
+                    <p className="text-4xl mt-2">Game</p>
+                    <Game />
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>
