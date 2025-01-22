@@ -50,7 +50,6 @@ Voici un compteur qui s'incrémente automatiquement toutes les secondes en utili
 
 Ré-implémentez une horloge en utilisant `useState` pour gérer le temps qui passe (heures, minutes, secondes) et `useEffect` pour mettre à jour le state chaque seconde.
 
-
 ---
 
 ## Exercice 2 : Compteur cyclique

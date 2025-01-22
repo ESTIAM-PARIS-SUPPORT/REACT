@@ -162,7 +162,7 @@ Nous allons créer un composant qui affiche un message après un délai défini,
 ---
 
 
-### Exercice 2 : Gestion du cycle de vie
+### Exercice  Gestion du cycle de vie
 Créez un composant qui compte les clics et affiche un message dans la console lorsque le composant est monté ou démonté.
 
 ---
@@ -207,5 +207,5 @@ const Counter = () => {
 - `useReducer` est idéal pour la logique d'état complexe.
 - Il retourne un tableau avec l'état actuel et une fonction `dispatch` pour envoyer des actions.
 
-### Exercice 3 : Calculatrice
+### Exercice  Calculatrice
 Créez une calculatrice simple avec deux champs numériques et des boutons pour additionner, multiplier et réinitialiser.
