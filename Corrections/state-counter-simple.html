@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <!-- Librairie React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Cible : DOM (navigateur) -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel notre transpileur JSX -> JS  -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+        .main{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- type text/bale pour la transcription  -->
+    <script type="text/babel">
+
+        function Counter(props){
+            // on a ici count le state et setCount une fonction qui modifie le state 
+            // Important si le state count change d'état (valeur différent de l'état) le re-render
+            const [count, setCount] = React.useState(0)
+
+            const increment = () => {
+                // modifie l'état du state count
+                setCount( count + 1 )
+            }
+
+            // rendu  ou re-render 
+            return (
+                <div className="main">
+                    <p>Count : {count}</p>
+                    <button onClick={increment} >+1</button>
+                </div>
+            );
+        }
+       
+        ReactDOM.createRoot(document.getElementById('root')).render(
+                  <Counter />  );
+    </script>
+</body>
+</html>
