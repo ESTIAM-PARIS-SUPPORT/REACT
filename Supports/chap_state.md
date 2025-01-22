@@ -39,6 +39,8 @@ fonction Counter(){
 
 ## Exercice 1 : Horloge avec State
 
+Utilisez le modèle suivant : [template](../Models/model.html)
+
 Ré-implémentez une horloge en utilisant `useState` pour gérer le temps qui passe (heures, minutes, secondes) et `useEffect` pour mettre à jour le state chaque seconde.
 
 ---
