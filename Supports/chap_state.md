@@ -10,7 +10,7 @@ Voici un exemple de base avec `useState` :
 
 ```jsx
 
-const Counter = () => {
+fonction Counter(){
   // Déclaration d'un state local "count" avec une valeur initiale de 0
   const [count, setCount] = React.useState(0);
 
@@ -26,8 +26,6 @@ const Counter = () => {
     </div>
   );
 };
-
-export default Counter;
 ```
 
 ### Explications
@@ -39,29 +37,10 @@ export default Counter;
 
 ---
 
-## Exemple 1 : Compteur avec incrémentation automatique
-
-Voici un compteur qui s'incrémente automatiquement toutes les secondes en utilisant `useEffect` pour gérer l'effet de côté (incrémentation régulière) :
-
-
----
-
 ## Exercice 1 : Horloge avec State
 
 Ré-implémentez une horloge en utilisant `useState` pour gérer le temps qui passe (heures, minutes, secondes) et `useEffect` pour mettre à jour le state chaque seconde.
 
 
 ---
-
-## Exercice 2 : Compteur cyclique
-
-Réalisez un compteur qui s'incrémente toutes les secondes, mais qui revient à 0 lorsqu'il atteint 10 (compteur cyclique avec modulo 10).
-
-
----
-
-## Récapitulatif
-
-- Utilisez **`useState`** pour définir et lire le state local.
-- Utilisez **`setState`** (fonction retournée par `useState`) pour mettre à jour le state.
-- Utilisez **`useEffect`** pour gérer les effets de côté, comme la mise à jour régulière avec `setInterval`.
+## TP : [game](./TP/01_game.md)
