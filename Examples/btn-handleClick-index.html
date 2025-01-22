@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Clock</title>
+
+    <!-- React and Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1A1A2E',
+                        'dark-card': '#16213E',
+                        'accent': '#0F3460',
+                        'primary-text': '#EAEAEA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-primary-text font-sans flex items-center justify-center h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Btn(){
+
+            // on récupère la valeur de l'index définit dans le rendu
+            const handleClick = (index) => {
+                console.log(index)
+            }
+
+            return (
+                <div className="bg-dark-card p-8 rounded-xl shadow-lg text-center">
+                    {/* on passe une variable à notre fonction handleClick que l'on récupère au clique plus haut */}
+                    <button onClick={() => handleClick(9)}>Recupération</button>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        
+        root.render(<Btn />)
+    </script>
+</body>
+
+</html>
