@@ -10,7 +10,7 @@ function genPos() {
 ```
 
 - [ ] A. Ce code retourne un entier aléatoire entre 1 et 4 inclus.  
-- [ ] B. Ce code retourne un entier aléatoire entre 0 et 3 inclus.  
+- [x] B. Ce code retourne un entier aléatoire entre 0 et 3 inclus.  
 - [ ] C. Ce code génère une position fixe pour le bouton cible.  
 - [ ] D. Ce code initialise tous les boutons avec des positions différentes.
 
@@ -24,7 +24,7 @@ const [count, setCount] = React.useState(2);
 ```
 
 - [ ] A. `count` garde en mémoire combien de boutons sont cliquables dans l'application.  
-- [ ] B. `count` initialise le score du joueur à 2.  
+- [x] B. `count` initialise le score du joueur à 2.  
 - [ ] C. `count` suit le nombre de tentatives restantes pour trouver le bouton correct.  
 - [ ] D. `count` représente l'indice du bouton cible.
 
@@ -42,7 +42,7 @@ if (index === target) {
 }
 ```
 
-- [ ] A. Ce code affiche un message, désactive le jeu, et met à jour le score si le bouton correct est cliqué.  
+- [x] A. Ce code affiche un message, désactive le jeu, et met à jour le score si le bouton correct est cliqué.  
 - [ ] B. Ce code vérifie si tous les boutons ont été cliqués.  
 - [ ] C. Ce code génère un nouveau bouton cible après chaque clic.  
 - [ ] D. Ce code augmente les chances de gagner si le bouton cible est cliqué.
@@ -64,7 +64,7 @@ Que représente cette partie dans le rendu du composant ?
 ))
 ```
 
-- [ ] A. Elle affiche 4 boutons interactifs, chacun ayant une position unique et un comportement lié à l’indice.  
+- [x] A. Elle affiche 4 boutons interactifs, chacun ayant une position unique et un comportement lié à l’indice.  
 - [ ] B. Elle affiche un seul bouton, mais celui-ci change dynamiquement sa position.  
 - [ ] C. Elle affiche une liste de boutons statiques qui ne peuvent pas être cliqués.  
 - [ ] D. Elle affiche les scores de l'utilisateur sous forme de boutons.
@@ -84,7 +84,7 @@ const reset = () => {
 };
 ```
 
-- [ ] A. Il réinitialise l'état du jeu, sélectionne un nouveau bouton cible, et remet le message initial.  
+- [x] A. Il réinitialise l'état du jeu, sélectionne un nouveau bouton cible, et remet le message initial.  
 - [ ] B. Il ajoute deux nouvelles tentatives pour l'utilisateur.  
 - [ ] C. Il conserve le score actuel, mais génère un nouveau bouton cible.  
 - [ ] D. Il affiche les statistiques du joueur et relance une nouvelle partie.
@@ -117,7 +117,7 @@ else
     )
 ```
 
-- [ ] A. Il affiche les boutons si la partie est en cours et affiche le score une fois la partie terminée.  
+- [x] A. Il affiche les boutons si la partie est en cours et affiche le score une fois la partie terminée.  
 - [ ] B. Il génère automatiquement des boutons jusqu'à ce que le bon soit trouvé.  
 - [ ] C. Il fait apparaître et disparaître les boutons en fonction de l'état `status`.  
 - [ ] D. Il affiche toujours le message et les boutons quelle que soit l’état de la partie.
