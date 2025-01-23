@@ -10,8 +10,11 @@
 6. State [state](./Supports/chap_state.md)
    1. [TP Game](./TP/01_game.md)
 7. Présentation des Hooks `useEffect`, `useState`, `usReducer` [intro](./Supports/chap-hook-part_01.md)
+   1. API Pokemon [api](./Examples/example-pokenom-api.html)
+   2. `useReducer` exemple complet [useReducer](./Examples/example-useReducer.html)
 8. Vite.JS et Tailwind CSS [configuration](./Supports/chap-vitejs.md) 
-9. Event [event](./Supports/chap_event.md)
+   1. TP Calculatrice [calculatrice](./TP/02_calculatrice.md)
+9.  Event [event](./Supports/chap_event.md)
 10. Formulaire [form](./Supports/chap_form.md)
 
 ### Les corrections des exercices
