@@ -163,7 +163,7 @@ Nous allons créer un composant qui affiche un message après un délai défini,
 
 
 ### Exercice  Gestion du cycle de vie
-Créez un composant qui compte les clics et affiche un message dans la console lorsque le composant est monté ou démonté.
+Créez un composant qui compte les clics et affiche un message lorsque vous arrivez à 10 clicks réalisés.
 
 ---
 
