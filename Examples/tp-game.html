@@ -41,7 +41,9 @@
 
         // Un composant simple
         function Button(props) {
-
+            // Si vous cliquez sur la props props.handleClick avec le paramètre passé en argument
+            // de la fonction, il déclenchera la méthode handleClick dans le parent : composant Game
+            // Cela permet dans un premier temps de séparer les composants : réutilisables
             return (
                 <button
                     className="px-4 py-2 text-lg rounded-lg bg-gray-700 hover:bg-gray-800"
@@ -57,6 +59,7 @@
                 console.log(index === 2, index)
             }
 
+            // la méthode handleClick est passée en props aux composants enfants
             return (
                 <React.Fragment>
                     <p className="mb-6 text-lg">Score </p>
