@@ -73,7 +73,8 @@ ReactDOM.render(
 
 ## Gestion des effets de bord avec `useEffect`
 
-### Objectif
+### Exercices - testez ce code 
+
 Nous allons créer un composant qui affiche un message après un délai défini, mais qui **annule le timeout** si le composant est retiré du DOM avant la fin du délai.
 
 ---
@@ -209,3 +210,19 @@ const Counter = () => {
 
 ### Exercice  Calculatrice
 Créez une calculatrice simple avec deux champs numériques et des boutons pour additionner, multiplier et réinitialiser.
+
+Utilisez le code suivant pour récupérer les données du champ `input`
+
+```js
+ const [num1, setNum1] = React.useState('');
+
+ // dans la partie render
+// num1 <=> contrôle la saise 
+// setNum1(e.target.value) récupère la saisie pour la contrôler
+<input
+    type="num1"
+    value={num1}
+    onChange={(e) => setNum1(e.target.value)}
+/>
+
+```
