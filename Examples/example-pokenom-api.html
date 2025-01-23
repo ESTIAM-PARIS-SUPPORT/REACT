@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1A1A2E',
+                        'dark-card': '#16213E',
+                        'accent': '#0F3460',
+                        'primary-text': '#EAEAEA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-primary-text font-sans flex items-center justify-center h-screen">
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function Pokemon(props) {
+            const { pokemonData } = props
+
+            return (
+                <div className="text-center">
+                    <h2 className="text-xl font-bold capitalize text-gray-800">
+                        {pokemonData.name}
+                    </h2>
+                    <img
+                        className="mx-auto my-4"
+                        src={pokemonData.sprites.front_default}
+                        alt={pokemonData.name}
+                    />
+                    <div className="text-gray-700">
+                        <p>
+                            <strong>ID :</strong> {pokemonData.id}
+                        </p>
+                        <p>
+                            <strong>Taille :</strong> {pokemonData.height / 10} m
+                        </p>
+                        <p>
+                            <strong>Poids :</strong> {pokemonData.weight / 10} kg
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        const App = () => {
+            const [pokemonId, setPokemonId] = useState('');
+            const [pokemonData, setPokemonData] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState(null);
+
+            useEffect(() => {
+                const fetchPokemon = async () => {
+                    try {
+                        setLoading(true); // On active le chargement
+                        setError(null); // Reset l'erreur
+                        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+                        if (!response.ok) {
+                            throw new Error("Erreur lors de la récupération du Pokémon.");
+                        }
+
+                        // sinon on récupère les données
+                        const data = await response.json();
+                        setPokemonData(data); // On met à jour les données du Pokémon
+                    } catch (err) {
+                        setError(err.message);
+                    } finally {
+                        setLoading(false); // Fin du chargement
+                    }
+                };
+
+                if (pokemonId && pokemonId != 0) fetchPokemon(); // Appel à la fonction
+                else setPokemonData(null)
+
+            }, [pokemonId]);
+
+            const handleChange = (e) => {
+                const { value : id } = e.target;
+                setPokemonId(id)
+            }
+
+            return (
+                <div className="bg-dark-card p-8 rounded-xl shadow-lg text-center">
+                    <p className="text-4xl mt-2">Pokemon ID</p>
+                    <input
+                        type="number"
+                        value={pokemonId}
+                        onChange={handleChange}
+                        min="0"
+                    />
+                    {error ? <p>{error}</p> : (
+                        loading ? <p>is loading ...</p> : (
+                            pokemonData ? <Pokemon pokemonData={pokemonData} /> : null
+                        )
+                    )}
+                </div>
+            );
+        };
+        const root = document.getElementById('root');
+        ReactDOM.createRoot(root).render(<App />);
+    </script>
+</body>
+
+</html>

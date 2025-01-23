@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Toggle with useEffect</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    const { useState, useEffect } = React;
+
+    const MessageApp = () => {
+      const [isVisible, setIsVisible] = useState(false);
+
+      useEffect(() => {
+        let timer;
+        if (isVisible) {
+          timer = setTimeout(() => {
+            setIsVisible(false);
+          }, 5000); // Message disappears after 5 seconds
+        }
+
+        // Cleanup function
+        return () => {clearTimeout(timer); console.log( isVisible ? 'démontage' : 'montage')}
+      }, [isVisible]);
+
+      return (
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+          <button
+            onClick={() => setIsVisible(true)}
+            style={{
+              padding: "10px 20px",
+              fontSize: "16px",
+              cursor: "pointer",
+              marginBottom: "20px",
+            }}
+          >
+            Show Message
+          </button>
+          {isVisible && (
+            <div
+              style={{
+                padding: "10px",
+                backgroundColor: "#007BFF",
+                color: "white",
+                borderRadius: "5px",
+                display: "inline-block",
+                fontSize: "18px",
+              }}
+            >
+              This is a temporary message!
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<MessageApp />, document.getElementById("root"));
+  </script>
+</body>
+</html>

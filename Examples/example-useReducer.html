@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const initialState = { count: 0, step: 2 };
+
+        function reducer(state, action) {
+            switch (action.type) {
+                case 'increment':
+                    return { ...state, count: state.count + state.step };
+                case 'decrement':
+                    return { ...state, count: state.count - 1 };
+
+                case 'step':
+                    return { ...initialState, step : parseInt(action.step ) }
+                case 'reset':
+                    return initialState;
+                default:
+                    throw new Error();
+            }
+        }
+
+        function Counter() {
+            const { useReducer, useState, useEffect } = React 
+            // state états de vos variables d'états
+            // dispatch fonction qui modifie l'état de vos variables dans le state
+            const [state, dispatch] = useReducer(reducer, initialState);
+            const [step, setStep] = useState(2)
+
+            useEffect(()=> {
+                dispatch({type : 'step' , step  })
+            }, [])
+
+            const handleChange = e  => {
+                const { value  } = e.target 
+                setStep(value)
+                dispatch({type : 'step' , step : value })
+            }
+
+            return (
+                <div>
+                    <p>Compteur : {state.count}</p>
+                    <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+                    <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+                    <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+                    <input type="number" min="0" value={step} onChange={handleChange} />
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Counter />
+        );
+    </script>
+</body>
+
+</html>
