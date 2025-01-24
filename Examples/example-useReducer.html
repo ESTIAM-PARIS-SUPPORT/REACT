@@ -3,71 +3,68 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Hello React</title>
+    <title>Exercice React</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
-    <style>
-        .heading {
-            color: purple;
-        }
-    </style>
 </head>
 
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        const initialState = { count: 0, step: 2 };
+        const initialState = { count : 0 , step : 2 }
 
-        function reducer(state, action) {
+        function reducer(state, action){
             switch (action.type) {
                 case 'increment':
-                    return { ...state, count: state.count + state.step };
+                    return { ...state, count : state.count + state.step }
+
                 case 'decrement':
-                    return { ...state, count: state.count - 1 };
+                    return { ...state, count : state.count - state.step }
 
                 case 'step':
-                    return { ...initialState, step : parseInt(action.step ) }
+                    return { ...state, step : action.step  }
+
                 case 'reset':
-                    return initialState;
+                    return initialState
+            
                 default:
                     throw new Error();
             }
         }
+       
+        const App = () => {
+            const { useEffect, useReducer } = React 
+            const [state, dispatch] = useReducer(reducer, initialState)
 
-        function Counter() {
-            const { useReducer, useState, useEffect } = React 
-            // state états de vos variables d'états
-            // dispatch fonction qui modifie l'état de vos variables dans le state
-            const [state, dispatch] = useReducer(reducer, initialState);
-            const [step, setStep] = useState(2)
+            const handleChange = e => {
+                const { value } = e.target 
+                console.log(isNaN(parseInt(value)))
+                if(value ==='') {
+                    dispatch({ type : 'step' , step : '' })
 
-            useEffect(()=> {
-                dispatch({type : 'step' , step  })
-            }, [])
-
-            const handleChange = e  => {
-                const { value  } = e.target 
-                setStep(value)
-                dispatch({type : 'step' , step : value })
+                    return 
+                }
+                if(isNaN(parseInt(value))) return
+                // dans le dispatch on met action 
+               dispatch({ type : 'step' , step : parseInt(value) })
             }
 
             return (
                 <div>
-                    <p>Compteur : {state.count}</p>
-                    <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-                    <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-                    <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
-                    <input type="number" min="0" value={step} onChange={handleChange} />
+                  <p>Count : {state.count} step : {state.step} </p>
+                  <p><button disabled={state.step === ''} onClick={() => dispatch({type : 'increment'})}>+{state.step}</button></p>
+                  <p><button disabled={state.step === ''} onClick={() => dispatch({type : 'decrement'})}> -{state.step}</button></p>
+                  <p><button  onClick={() => dispatch({type : 'reset'})}> reset</button></p>
+                  <p><input type="number" min="0" value={state.step} onChange={handleChange} /></p>
                 </div>
             );
         };
 
         ReactDOM.createRoot(document.getElementById('root')).render(
-            <Counter />
+            <App />
         );
     </script>
 </body>
-
 </html>
