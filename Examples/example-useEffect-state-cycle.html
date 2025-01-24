@@ -16,20 +16,41 @@
        
         const App = () => {
             const { useEffect, useState } = React 
-            const [ count, setCount ] = useState(0)
+            const [count, setCount] = useState(0)
+            const [count2, setCount2] = useState(0)
 
+            // exécuter au montage 
             useEffect(() => {
-                console.log("useEffect fonction principal", count)
+                console.log(count, count2)
+            }, [])
 
+            // watch tous les states ( toutes les variables )
+            useEffect(() => {
+                console.log("function 1 principale ", count, count2)
+            })
+
+            useEffect(()=>{
+                console.log("function 2 principale", count)
+
+                // fonction optionnelle
                 return () => {
-                    console.log("useEffect fonction montage/démontage", count)
+                    console.log("function 2 montage/démontage", count)
+
                 }
             }, [count])
 
+            useEffect(()=>{
+                console.log("function principale 3", count, count2)
+
+                
+            }, [count, count2])
+           
+
             return (
                 <div>
-                    <p>Count {count}</p>
-                    <button onClick={() => setCount(count + 1)} >+1</button>
+                    <p>Count : {count} Count 2 : {count2} </p>
+                    <p><button onClick={()=> setCount(count + 1)} >+1</button></p>
+                    <p><button onClick={()=> setCount2(count2 + 1)} >+1</button></p>
                 </div>
             );
         };
