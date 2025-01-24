@@ -17,7 +17,7 @@
 9.  Event [event](./Supports/chap_event.md)
 10. Formulaire [form](./Supports/chap_form.md)
 
-### Les corrections des exercices
+### Les corrections & les exemples
 
 1. Corrections [correction](./Corrections/)
 2. Examples [examples](./Examples/)
