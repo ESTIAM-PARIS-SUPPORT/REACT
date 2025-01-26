@@ -17,6 +17,11 @@
 9.  Event [event](./Supports/chap_event.md)
 10. Formulaire [form](./Supports/chap_form.md)
 
+### Gestion du state
+
+1. [introduction](./Supports/chap-intro-zustand.md)
+2. [immer](./Supports/chap-intro-immer.md)
+
 ### Les corrections & les exemples
 
 1. Corrections [correction](./Corrections/)
