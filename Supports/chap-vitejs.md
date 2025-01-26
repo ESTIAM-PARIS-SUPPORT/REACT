@@ -16,14 +16,6 @@ Assurez-vous que les éléments suivants sont installés :
 npm create vite@latest my-react-app
 ```
 
-   - Vous serez invité à choisir un nom de projet, ou utilisez `my-react-app` comme par défaut.
-   - Sélectionnez ensuite `React` comme framework et `JavaScript` ou `TypeScript` selon vos préférences.
-
-   Exemple pour TypeScript :
-   ```bash
-   npm create vite@latest my-react-app -- --template react-ts
-   ```
-
 ---
 
 ### **Installer les dépendances**
@@ -91,36 +83,24 @@ Si vous avez déjà un projet (par exemple, un projet React avec Vite), commence
 2. Exécutez la commande suivante pour installer Tailwind et ses dépendances :
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
+npm install tailwindcss @tailwindcss/vite
 ```
 
-3. Initialisez un fichier de configuration Tailwind avec la commande suivante :
-
-```bash
-npx tailwindcss init
-```
-
-Cela génère un fichier `tailwind.config.js` à la racine de votre projet.
-
----
-
-### **Configurer Tailwind CSS**
-
-#### **Mise à jour du fichier `tailwind.config.js`**
-Ajoutez les chemins vers vos fichiers où vous utiliserez Tailwind dans la propriété `content`. Par exemple :
+3. Modifiez le fichier vite `vite.config.js`
 
 ```javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html", // Fichier HTML de base
-    "./src/**/*.{js,jsx,ts,tsx}", // Composants React ou fichiers JS/TS
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss()
   ],
-  theme: {
-    extend: {}, // Ajoutez vos personnalisations ici si nécessaire
-  },
-  plugins: [],
-};
+})
+
 ```
 
 ---
