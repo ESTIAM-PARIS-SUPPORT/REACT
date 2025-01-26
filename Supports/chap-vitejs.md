@@ -76,6 +76,8 @@ Voici un tutoriel détaillé pour intégrer **Tailwind CSS** dans votre projet, 
 ---
 ### **Installer Tailwind CSS**
 
+Pensez à consutler la documentation : [tailwindcss](https://tailwindcss.com)
+
 #### **Pour un projet existant**
 Si vous avez déjà un projet (par exemple, un projet React avec Vite), commencez par installer Tailwind CSS :
 
