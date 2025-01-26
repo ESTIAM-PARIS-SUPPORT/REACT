@@ -1,5 +1,7 @@
 # Vite JS
 
+[Vite](https://vite.dev/guide)
+
 ### **Prérequis**
 Assurez-vous que les éléments suivants sont installés :
 1. **Node.js** (version 14 ou supérieure, idéalement la version LTS).
