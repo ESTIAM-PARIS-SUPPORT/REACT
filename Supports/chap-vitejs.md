@@ -1,5 +1,7 @@
 # Vite JS
 
+[Vite](https://vite.dev/guide)
+
 ### **Prérequis**
 Assurez-vous que les éléments suivants sont installés :
 1. **Node.js** (version 14 ou supérieure, idéalement la version LTS).
@@ -15,14 +17,6 @@ Assurez-vous que les éléments suivants sont installés :
 ```bash
 npm create vite@latest my-react-app
 ```
-
-   - Vous serez invité à choisir un nom de projet, ou utilisez `my-react-app` comme par défaut.
-   - Sélectionnez ensuite `React` comme framework et `JavaScript` ou `TypeScript` selon vos préférences.
-
-   Exemple pour TypeScript :
-   ```bash
-   npm create vite@latest my-react-app -- --template react-ts
-   ```
 
 ---
 
@@ -84,6 +78,8 @@ Voici un tutoriel détaillé pour intégrer **Tailwind CSS** dans votre projet, 
 ---
 ### **Installer Tailwind CSS**
 
+Pensez à consutler la documentation : [tailwindcss](https://tailwindcss.com)
+
 #### **Pour un projet existant**
 Si vous avez déjà un projet (par exemple, un projet React avec Vite), commencez par installer Tailwind CSS :
 
@@ -91,36 +87,24 @@ Si vous avez déjà un projet (par exemple, un projet React avec Vite), commence
 2. Exécutez la commande suivante pour installer Tailwind et ses dépendances :
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
+npm install tailwindcss @tailwindcss/vite
 ```
 
-3. Initialisez un fichier de configuration Tailwind avec la commande suivante :
-
-```bash
-npx tailwindcss init
-```
-
-Cela génère un fichier `tailwind.config.js` à la racine de votre projet.
-
----
-
-### **Configurer Tailwind CSS**
-
-#### **Mise à jour du fichier `tailwind.config.js`**
-Ajoutez les chemins vers vos fichiers où vous utiliserez Tailwind dans la propriété `content`. Par exemple :
+3. Modifiez le fichier vite `vite.config.js`
 
 ```javascript
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html", // Fichier HTML de base
-    "./src/**/*.{js,jsx,ts,tsx}", // Composants React ou fichiers JS/TS
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss()
   ],
-  theme: {
-    extend: {}, // Ajoutez vos personnalisations ici si nécessaire
-  },
-  plugins: [],
-};
+})
+
 ```
 
 ---
@@ -131,9 +115,22 @@ module.exports = {
 2. Remplacez son contenu par les directives de base de Tailwind :
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+```
+
+Modifiez le fichier `App.jsx`, remplacez le par le code suivant :
+
+```js
+function App() {
+
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+
+export default App
 ```
 
 ---
@@ -146,67 +143,32 @@ module.exports = {
 npm run dev
 ```
 
-2. Vous pouvez maintenant utiliser les classes Tailwind dans vos fichiers JSX, HTML ou autres.
+### Mettre en Dark votre application
 
----
+1. Dans votre fichier `index.css` 
 
-### **Exemple d'utilisation**
-
-#### **Exemple dans un fichier React (JSX)**
-Modifiez un composant React pour inclure des classes Tailwind :
-
-```jsx
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded shadow-lg">
-        <h1 className="text-2xl font-bold text-gray-800">Hello, Tailwind CSS!</h1>
-        <p className="text-gray-600 mt-4">
-          Avec Tailwind, le style devient un jeu d'enfant 🚀
-        </p>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Cliquez-moi
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default App;
+```css
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 ```
 
----
+2. Dans le fichier `index.html`
 
-### **Personnalisation de Tailwind CSS**
+Ajoutez les bonnes classes au html et body
 
-#### **Étendre le thème**
-Dans le fichier `tailwind.config.js`, vous pouvez ajouter vos propres couleurs, polices ou autres extensions :
-
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: "#1E90FF",
-        secondary: "#FF6347",
-      },
-    },
-  },
-};
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body data-theme="dark" class="bg-white dark:bg-black" >
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
 ```
 
-#### **Ajouter des plugins**
-Ajoutez des plugins pour des fonctionnalités supplémentaires, comme les formulaires ou les typographies :
-
-```bash
-npm install @tailwindcss/forms @tailwindcss/typography
-```
-
-Dans le fichier `tailwind.config.js`, ajoutez les plugins :
-
-```javascript
-plugins: [
-  require("@tailwindcss/forms"),
-  require("@tailwindcss/typography"),
-],
-```
