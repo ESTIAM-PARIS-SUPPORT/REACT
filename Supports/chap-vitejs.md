@@ -111,9 +111,22 @@ export default defineConfig({
 2. Remplacez son contenu par les directives de base de Tailwind :
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+```
+
+Modifiez le fichier `App.jsx`, remplacez le par le code suivant :
+
+```js
+function App() {
+
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+
+export default App
 ```
 
 ---
@@ -124,69 +137,4 @@ export default defineConfig({
 
 ```bash
 npm run dev
-```
-
-2. Vous pouvez maintenant utiliser les classes Tailwind dans vos fichiers JSX, HTML ou autres.
-
----
-
-### **Exemple d'utilisation**
-
-#### **Exemple dans un fichier React (JSX)**
-Modifiez un composant React pour inclure des classes Tailwind :
-
-```jsx
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded shadow-lg">
-        <h1 className="text-2xl font-bold text-gray-800">Hello, Tailwind CSS!</h1>
-        <p className="text-gray-600 mt-4">
-          Avec Tailwind, le style devient un jeu d'enfant 🚀
-        </p>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Cliquez-moi
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default App;
-```
-
----
-
-### **Personnalisation de Tailwind CSS**
-
-#### **Étendre le thème**
-Dans le fichier `tailwind.config.js`, vous pouvez ajouter vos propres couleurs, polices ou autres extensions :
-
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: "#1E90FF",
-        secondary: "#FF6347",
-      },
-    },
-  },
-};
-```
-
-#### **Ajouter des plugins**
-Ajoutez des plugins pour des fonctionnalités supplémentaires, comme les formulaires ou les typographies :
-
-```bash
-npm install @tailwindcss/forms @tailwindcss/typography
-```
-
-Dans le fichier `tailwind.config.js`, ajoutez les plugins :
-
-```javascript
-plugins: [
-  require("@tailwindcss/forms"),
-  require("@tailwindcss/typography"),
-],
 ```
