@@ -138,3 +138,31 @@ export default App
 ```bash
 npm run dev
 ```
+
+### Mettre en Dark votre application
+
+1. Dans votre fichier `index.css` 
+
+```css
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+```
+
+2. Dans le fichier `index.html`
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body data-theme="dark" class="bg-white dark:bg-black" >
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
