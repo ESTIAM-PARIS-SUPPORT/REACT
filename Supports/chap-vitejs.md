@@ -152,6 +152,8 @@ npm run dev
 
 2. Dans le fichier `index.html`
 
+Ajoutez les bonnes classes au html et body
+
 ```html
 <!doctype html>
 <html lang="en">
