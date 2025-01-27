@@ -1,13 +1,11 @@
-import { useState } from 'react'
+import { useStoreCount } from "../stores/bears"
 
 function Counter() {
-  const [count, setCount] = useState(0)
+  const { bears } =  useStoreCount()
 
   return (
     <div className='main'>
-        <p>Counter : {count}</p>
-        <p><button onClick={() => setCount(count +1)}>+1</button></p>
-        <p><button onClick={() => setCount(count -1)}>-1</button></p>
+       <p>Bears : {bears}</p>
     </div>
   )
 }
