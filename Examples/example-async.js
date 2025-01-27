@@ -9,6 +9,10 @@ function simulateDelay(ms) {
     await simulateDelay(2000);
     
     console.log('End');
+
+    return "Hello async"
   }
   
-  task();
+  task().then(console.log)
+
+  console.log('Oups');
