@@ -45,3 +45,11 @@ numbers.map( (number) => {
 numbers  = numbers.map(cn)
 
 console.log(numbers)
+
+
+const users = [{ id : 1, name : "Alan",} , { id : 3, name : "Sophie"}]
+
+console.log( users.filter( user => user.id !== 3) )
+
+const user = { id:  7, name : "Phil"}
+console.log( [ ...users, user  ] ) 
