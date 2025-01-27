@@ -20,7 +20,15 @@
 ### Gestion du state
 
 1. [introduction](./Supports/chap-intro-zustand.md)
-2. [immer](./Supports/chap-intro-immer.md)
+2. Persist [persist](./Supports/chap-zustand-persist.md)
+3. Pour aller plus loin [immer](./Supports/chap-intro-immer.md)
+
+### Examens
+
+1. Tasks [tasks](./Examens/examen-tasks.md)
+   1. API : [task apis](./api-task/)
+2. Tic Tac Toe [tic tac toe](./Examens/exame-tic-tac-toe.md)
+3. Proposez votre sujet !
 
 ### Les corrections & les exemples
 
