@@ -37,9 +37,10 @@ my-react-app/
 ├── public/          # Fichiers statiques
 ├── src/
 │   ├── App.jsx      # Composant principal
-│   ├── main.jsx     # Point d'entrée de l'application
+│   ├── main.jsx     # Bootstrap - amorçage de l'application 
 │   └── index.css    # Feuille de styles globale
 ├── package.json     # Fichier de configuration npm
+├── index.html       # Point d'entrée de l'application 
 ├── vite.config.js   # Configuration de Vite
 ```
 
