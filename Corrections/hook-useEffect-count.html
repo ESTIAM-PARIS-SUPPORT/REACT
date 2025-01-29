@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Devinez le bouton</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const Message = (props)  => <p>{props.message}</p>
+
+        function App() {
+            const { useState, Fragment, useEffect } = React;
+            const [count, setCount] = useState(0);
+            const [message, setMessage] = useState('');
+
+            useEffect(() => {
+                if (count == 10)
+                    setMessage('Hello React')
+            }, [count])
+
+            return (
+                <Fragment>
+                    <h3> useEffect message count : {count}</h3>
+                    {message === '' ? (
+                        <p><button onClick={() => setCount(count + 1)}>+1</button></p>
+                    ) : (
+                        <Message message={message} />
+                    )}
+                </Fragment>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App />
+        );
+    </script>
+</body>
+
+</html>

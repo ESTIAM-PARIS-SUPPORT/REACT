@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    <!-- Ajouter Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Style personnalisé si nécessaire */
+        .container {
+            background-color: #121212; /* Dark GitHub-like background */
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        button {
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <div id="root" class="p-6 flex justify-center items-center h-screen"></div>
+    <script type="text/babel">
+        const SECOND = 1000;
+        const MAX_COUNTER = 15;
+
+        const App = () => {
+            return (
+                <div className="container mx-auto text-center">
+                    <Button step={1} />
+                    <Button step={2} />
+                </div>
+            )
+        }
+
+        const Button = ({ step }) => {
+            const [count, setCount] = React.useState(0);
+            const [disabled, setDisabled] = React.useState(false);
+            const [message, setMessage] = React.useState("");
+
+            // référence au composant unique au montage
+            const interval = React.useRef(null);
+
+            React.useEffect(() => {
+                if (count >= MAX_COUNTER) {
+                    clearInterval(interval.current);
+                    return;
+                }
+            }, [count]);
+
+            const start = () => {
+                if (count >= MAX_COUNTER) {
+                    clearInterval(interval.current);
+                    setMessage("Vous avez atteint la limite !!");
+                    return;
+                }
+                setDisabled(true);
+                clearInterval(interval.current);
+                interval.current = setInterval(
+                    () => setCount(count => count + step),
+                    SECOND
+                );
+            }
+
+            const stop = () => {
+                setDisabled(false);
+                clearInterval(interval.current);
+            }
+
+            const reset = () => {
+                stop();
+                setCount(0);
+                setMessage("");
+            }
+
+            return (
+                <div className="mb-6">
+                    {message && <p className="message">{message}</p>}
+                    <div className="text-3xl">{count}</div>
+                    <div className="mt-4">
+                        <button
+                            disabled={disabled}
+                            onClick={start}
+                            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition mx-2"
+                        >
+                            Start (+{step})
+                        </button>
+                    </div>
+                    <div className="mt-2">
+                        <button
+                            disabled={!disabled}
+                            onClick={stop}
+                            className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-700 disabled:opacity-50 transition mx-2"
+                        >
+                            Stop
+                        </button>
+                    </div>
+                    {count > 0 && (
+                        <div className="mt-2">
+                            <button
+                                onClick={reset}
+                                className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition mx-2"
+                            >
+                                Reset
+                            </button>
+                        </div>
+                    )}
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

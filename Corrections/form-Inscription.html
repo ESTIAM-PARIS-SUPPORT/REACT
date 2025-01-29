@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form with Validation</title>
+    <!-- Tailwind CSS Integration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+<body class="bg-gray-100 py-10">
+
+    <div id="root" class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg"></div>
+
+    <script type="text/babel">
+        const AGE = 18 
+
+        function Signup() {
+            const [name, setName] = React.useState('');
+            const [email, setEmail] = React.useState('');
+            const [birthDate, setBirthDate] = React.useState('');
+            const [errors, setErrors] = React.useState({});
+            const [submittedData, setSubmittedData] = React.useState(null);
+
+            const passwordRef = React.useRef();
+            const confirmPasswordRef = React.useRef();
+
+            // Form validation
+            const validateForm = () => {
+                const newErrors = {};
+                
+                // Name validation
+                if (name.length < 5) {
+                    newErrors.name = 'Name must be at least 5 characters long.';
+                }
+
+                // Email validation
+                if (!email.includes('@')) {
+                    newErrors.email = 'Email must contain "@"';
+                }
+
+                // Password validation
+                if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+                    newErrors.password = 'Passwords do not match.';
+                }
+
+                // Birth date validation (age >= 18)
+                const birthDateObject = new Date(birthDate);
+                const age = new Date().getFullYear() - birthDateObject.getFullYear();
+                if (age < 18) {
+                    newErrors.birthDate = 'You must be at least 18 years old.';
+                }
+
+                setErrors(newErrors);
+                
+                return Object.keys(newErrors).length === 0;
+            };
+
+            const handleSubmit = (event) => {
+                event.preventDefault();
+                if (validateForm()) {
+                    setSubmittedData({
+                        name,
+                        email,
+                        birthDate
+                    });
+                }
+            };
+
+            return (
+                <div>
+                    {!submittedData ? (
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Full Name:</label>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Email:</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Password:</label>
+                                <input
+                                    type="password"
+                                    ref={passwordRef}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Confirm Password:</label>
+                                <input
+                                    type="password"
+                                    ref={confirmPasswordRef}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Birth Date (adulte only):</label>
+                                <input
+                                    type="date"
+                                    value={birthDate}
+                                    onChange={(e) => setBirthDate(e.target.value)}
+                                    className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.birthDate && <p className="text-sm text-red-500">{errors.birthDate}</p>}
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                Sign Up
+                            </button>
+                        </form>
+                    ) : (
+                        <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <h3 className="text-lg font-semibold text-green-700">Submitted Data</h3>
+                            <p><strong>Name:</strong> {submittedData.name}</p>
+                            <p><strong>Email:</strong> {submittedData.email}</p>
+                            <p><strong>Birth Date:</strong> {submittedData.birthDate}</p>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Signup />);
+    </script>
+
+</body>
+</html>

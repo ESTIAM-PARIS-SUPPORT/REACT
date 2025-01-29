@@ -31,9 +31,16 @@
             // Important si le state count change d'état (valeur différent de l'état) le re-render
             const [count, setCount] = React.useState(0)
 
+            console.log(Math.random())
+
             const increment = () => {
                 // modifie l'état du state count
                 setCount( count + 1 )
+            }
+
+            const decrement = () => {
+                // modifie l'état du state count
+                setCount( count - 1 )
             }
 
             // rendu  ou re-render 
@@ -41,6 +48,7 @@
                 <div className="main">
                     <p>Count : {count}</p>
                     <button onClick={increment} >+1</button>
+                    {count > 0  ? (<button onClick={decrement} >-1</button>) : null}
                 </div>
             );
         }

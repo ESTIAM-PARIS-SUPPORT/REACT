@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+    <!-- CDN Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <div id="root" class="flex items-center justify-center min-h-screen"></div>
+    <script type="text/babel">
+        const App = () => {
+
+            const [count, setCount] = React.useState(0);
+            const [message, setMessage] = React.useState("");
+            const [disabled, setDisabled] = React.useState(false);
+
+            const increment = () => {
+                setCount(count + 1);
+                setMessage('');
+                setDisabled(false);
+            }
+
+            const decrement = () => {
+
+                if (count === 0) {
+                    setMessage('Attention vous ne pouvez pas décrémenter en dessous de 0');
+                    setDisabled(true);
+
+                    return;
+                }
+
+                setCount(count - 1);
+            }
+
+            return (
+                <div className="flex flex-col items-center justify-center p-6 bg-gray-800 rounded-lg shadow-lg space-y-4">
+                    <div>
+                        <p className="text-xl font-semibold">Counter : {count}</p>
+                        {/* Affichage du message d'erreur si présent */}
+                        {message !== '' && (
+                            <p className="text-red-400">{message}</p>
+                        )}
+                        <div className="flex space-x-4">
+                            <button
+                                onClick={increment}
+                                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                            >
+                                +1
+                            </button>
+                            <button
+                                disabled={disabled}
+                                onClick={decrement}
+                                className={`px-4 py-2 ${disabled ? 'bg-gray-600' : 'bg-red-600'} text-white rounded-lg hover:bg-red-700`}
+                            >
+                                -1
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
