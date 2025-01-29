@@ -2,6 +2,12 @@
 
 ### Introduction
 
+Mistral est une entreprise française spécialisée dans l’intelligence artificielle, fondée en 2023. Elle développe des modèles de langage open-source similaires à ceux d’OpenAI (comme GPT) et vise à proposer des alternatives européennes aux modèles américains et chinois.
+
+Mistral se distingue par son approche open-weight (modèles dont les poids sont accessibles publiquement) et sa volonté de favoriser une IA transparente et accessible aux développeurs. Elle a notamment publié des modèles comme Mistral 7B, un modèle performant et compact, ainsi que Mixtral, un modèle MoE (Mixture of Experts) qui active seulement une partie de ses paramètres à chaque requête, ce qui optimise les performances et réduit les coûts de calcul.
+
+L’entreprise est rapidement devenue un acteur clé de l’IA en Europe et bénéficie de financements importants pour rivaliser avec les géants du secteur.
+
 Dans ce cours, nous allons configurer un serveur Express pour utiliser l'API Mistral. Nous allons créer une route POST pour recevoir des messages de chat et obtenir des réponses en utilisant le modèle de langage de Mistral.
 
 ### Prérequis
